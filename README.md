@@ -1,4 +1,4 @@
-# Docker Compose a simple AEM dev enviorment 
+# Docker Compose a simple AEM dev environment 
 
 You will need to build the following images localy first before running the docker-compse command from the projects directory
 ```
