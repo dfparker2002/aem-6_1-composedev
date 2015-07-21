@@ -36,4 +36,15 @@ you should see all the images listed and ready for use.  Now you can run the com
 docker-compose up -d
 ```
 
+I included a simple script to help build the whole setup out.
+```
+makeLocalImages.sh
+```
+put it in root directory where you want all the build scripts and git clones to happen and it will pull everything and run the docker commands.  At the end you will need to change to the directory aem-6_1-composedev (again) and run 
+```
+docker-compose up -d
+```
+to bring it all up
+
+I need to find the right command to show the local VM's ip address so you can connect to the new enviroment.  Today I am using Kitematic on my mac to show me the access urls. 
 
