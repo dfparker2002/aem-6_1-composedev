@@ -1,25 +1,9 @@
 #!/bin/bash
-if ! git clone git@github.com:AdobeAtAdobe/aem-6_1-base.git; then
-    echo "No big deal.  If you want you can go into that dir and just do a git pull if you need/want to update the project"
-fi
-
-if ! git clone git@github.com:AdobeAtAdobe/aem-6_1-publish.git; then
-    echo "No big deal.  If you want you can go into that dir and just do a git pull if you need/want to update the project"
-fi
-
-if ! git clone git@github.com:AdobeAtAdobe/aem-6_1-author.git; then
-    echo "No big deal.  If you want you can go into that dir and just do a git pull if you need/want to update the project"
-fi
-
-if ! git clone git@github.com:AdobeAtAdobe/aem-6_1-dispatcher-publish.git; then
-    echo "No big deal.  If you want you can go into that dir and just do a git pull if you need/want to update the project"
-fi
-
 if ! git clone git@github.com:AdobeAtAdobe/aem-6_1-composedev.git; then
     echo "No big deal.  If you want you can go into that dir and just do a git pull if you need/want to update the project"
 fi
 
-sh -c 'cd aem-6_1-base/ && exec docker build -t dbenge/aem-6_1-base .'
+sh -c 'cd aem-6_1-base/ && exec docker build -t dbenge/aem-6_1-base https://raw.githubusercontent.com/AdobeAtAdobe/aem-6_1-base/master/Dockerfile'
 echo "done building Base image"
 
 while true; do
@@ -31,7 +15,7 @@ while true; do
     esac
 done
 
-sh -c 'cd aem-6_1-publish/ && exec docker build -t aem_6-1_publish .'
+sh -c 'cd aem-6_1-publish/ && exec docker build -t aem_6-1_publish https://raw.githubusercontent.com/AdobeAtAdobe/aem-6_1-publish/master/Dockerfile'
 echo "done building Publisher"
 
 while true; do
@@ -43,11 +27,11 @@ while true; do
     esac
 done
 
-sh -c 'cd aem-6_1-author/ && exec docker build -t aem_6-1_author .'
+sh -c 'cd aem-6_1-author/ && exec docker build -t aem_6-1_author https://raw.githubusercontent.com/AdobeAtAdobe/aem-6_1-author/master/Dockerfile'
 echo "done building Author"
 
-sh -c 'cd aem-6_1-dispatcher-publish/ && exec docker build -t dispatcher_4-1-9 .'
+sh -c 'cd aem-6_1-dispatcher-publish/ && exec docker build -t dispatcher_4-1-9 https://raw.githubusercontent.com/AdobeAtAdobe/aem-6_1-dispatcher-publish/master/Dockerfile'
 echo "done building Dispatcher"
 
 sh -c 'cd aem-6_1-composedev'
-echo 'Now go into aem-6_1-composedev and run docker-compose up -d'
+echo 'Now go into aem-6_1-composedev and run this command:docker-compose up -d'
